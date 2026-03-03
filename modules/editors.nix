@@ -11,7 +11,7 @@ in {
     defaultEditor = true;  # EDITOR=nvim
   };
 
-  # Nano, vim (базовый), helix — просто пакеты, без programs.*
+  
   home.packages = with pkgs; [
     nano
     vim      # базовый vim из nixpkgs (если нужно именно он, а не neovim-алиас)
