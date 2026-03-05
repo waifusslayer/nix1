@@ -1,5 +1,5 @@
 {
-  description = "DevOps Home Manager под root";
+  description = "Home Manager";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -15,10 +15,12 @@
 
   outputs = { self, nixpkgs, home-manager, krewfile, ... }@inputs:
   let
-    system = "x86_64-linux";   # ← поменяй, если у тебя aarch64-linux (ARM), x86_64-darwin (Intel Mac) или aarch64-darwin (Apple Silicon)
+    # Автоматическое определение текущего пользователя и системы
+    username = builtins.getEnv "USER" or (builtins.baseNameOf (builtins.getEnv "HOME"));
+    system   = builtins.currentSystem or "x86_64-linux";  
   in {
-    homeConfigurations.root = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};   
+    homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
 
       extraSpecialArgs = { inherit inputs; };
 
