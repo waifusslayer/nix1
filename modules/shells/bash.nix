@@ -5,5 +5,7 @@
     initExtra = ''
       eval "$(starship init bash)"
     '';
+
+    shellAliases = config.commonShellAliases;  
   };
 }
