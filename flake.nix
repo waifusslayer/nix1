@@ -1,5 +1,5 @@
 {
-  description = "Универсальная DevOps-конфигурация Home Manager";
+  description = "Home Manager";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
