@@ -1,7 +1,7 @@
-{ config, pkgs, lib, ... }:
+{ ... }:
 
 {
-  programs.zsh.shellAliases = {
+  commonShellAliases = {
     k   = "kubectl";
     ks  = "kubens";
     ktx = "kubectx";
@@ -10,9 +10,6 @@
     update = "home-manager switch --flake .";
     gc     = "nix-collect-garbage -d";
   };
-
-  programs.fish.shellAliases = config.programs.zsh.shellAliases;
-  programs.bash.shellAliases = config.programs.zsh.shellAliases;
 
   home.sessionVariables = {
     EDITOR     = "nvim";
