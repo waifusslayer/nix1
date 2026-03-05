@@ -6,6 +6,8 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    shellAliases = config.commonShellAliases;  
+
     initContent = lib.mkMerge [
       (lib.mkOrder 500 ''
         eval "$(starship init zsh)"
