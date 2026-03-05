@@ -1,5 +1,5 @@
 {
-  description = "Home Manager";
+  description = "Универсальная DevOps-конфигурация Home Manager";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -15,11 +15,8 @@
 
   outputs = { self, nixpkgs, home-manager, krewfile, ... }@inputs:
   let
-    
     usernameRaw = builtins.getEnv "USER";
     username = if usernameRaw != "" then usernameRaw else builtins.baseNameOf (builtins.getEnv "HOME");
-
-    
     system = builtins.currentSystem or "x86_64-linux";
   in {
     homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
