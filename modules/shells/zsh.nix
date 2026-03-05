@@ -6,7 +6,6 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    # Starship и completions только для zsh
     initContent = lib.mkMerge [
       (lib.mkOrder 500 ''
         eval "$(starship init zsh)"
