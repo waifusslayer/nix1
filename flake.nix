@@ -16,8 +16,11 @@
   outputs = { self, nixpkgs, home-manager, krewfile, ... }@inputs:
   let
     
-    username = builtins.getEnv "USER" or (builtins.baseNameOf (builtins.getEnv "HOME"));
-    system   = builtins.currentSystem or "x86_64-linux";  
+    usernameRaw = builtins.getEnv "USER";
+    username = if usernameRaw != "" then usernameRaw else builtins.baseNameOf (builtins.getEnv "HOME");
+
+    
+    system = builtins.currentSystem or "x86_64-linux";
   in {
     homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
