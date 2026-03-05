@@ -5,5 +5,7 @@
     interactiveShellInit = ''
       starship init fish | source
     '';
+
+    shellAliases = config.commonShellAliases; 
   };
 }
