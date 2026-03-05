@@ -15,7 +15,7 @@
 
   outputs = { self, nixpkgs, home-manager, krewfile, ... }@inputs:
   let
-    # Автоматическое определение текущего пользователя и системы
+    
     username = builtins.getEnv "USER" or (builtins.baseNameOf (builtins.getEnv "HOME"));
     system   = builtins.currentSystem or "x86_64-linux";  
   in {
